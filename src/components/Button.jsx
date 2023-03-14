@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {startTimer} from "./Timer"
+
 
 const sets = [8,8,8,8,8];
 
@@ -10,7 +10,7 @@ function Button(props){
         if (reps==0)
             setReps(8)
         else setReps((prepValue) => {return prepValue-1})
-        startTimer()
+        props.startTimer()
     }
     return <button
         className="btn btn-danger"

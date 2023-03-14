@@ -5,11 +5,10 @@ function Timer(props) {
     const [time, setTime] = useState('01:30')
     const [minutes, setMinutes] = useState(1)
     const [seconds, setSeconds] = useState(30)
-    const [visibility,setVisibility] = useState(false)
     function changeTime() {
         if (minutes === 0 && seconds === 0) {
-            setVisibility(false)
-            //console.log("we did good");
+            props.stopTimer()
+            resetTimer()
         }
         if (minutes >= 0 && seconds > 0) {
             setSeconds((prevValue) => { return prevValue - 1 })
@@ -30,29 +29,29 @@ function Timer(props) {
                 return j + ':' + k
             })
     }
+    function resetTimer(){
+        console.log('in resetTimer');
+        setTime('1:30')
+        setMinutes(1)
+        setSeconds(30)
     
+    }
     
     
     useEffect(() => {
         const interval = setInterval(() => changeTime(), 1000);
         return () => clearInterval(interval);
     });
+    
 
     return <div className="timer">
-    {visibility && <p onClick={changeTime}> {time} left </p> } 
+    <p onClick={changeTime}> {time} left </p> 
     </div>
 
 
 }
-function startTimer(){
-    setTime('1:30')
-    setMinutes(1)
-    setSeconds(30)
-    setVisibility(true)
 
-}
-
-export {Timer as default, startTimer}
+export default Timer;
 
 
 

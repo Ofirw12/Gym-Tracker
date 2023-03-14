@@ -1,12 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Row from "./Row";
-import Timer,{startTimer} from "./Timer";
+import Timer from "./Timer";
 
 
 
 function App() {
+    //Timer functions
+    const [showTimer,setShowTimer] = useState(false)
+    function startTimer(){
+        setShowTimer(true)
+    }
+    function stopTimer(){
+        setShowTimer(false)
+    }
 
 
     return <div>
@@ -32,7 +40,7 @@ function App() {
             key={4}
             startTimer={startTimer}
         />
-        <Timer />
+        {showTimer && <Timer stopTimer={stopTimer}/>}
         <Footer />
     </div>
 }
