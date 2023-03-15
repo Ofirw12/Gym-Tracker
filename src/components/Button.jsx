@@ -7,7 +7,7 @@ function Button(props){
     const [reps,setReps]=useState(8)
     function ChangeReps(){
         
-        if (reps==0)
+        if (reps===0)
             setReps(8)
         else setReps((prepValue) => {return prepValue-1})
         props.startTimer()

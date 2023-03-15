@@ -45,9 +45,9 @@ function Timer(props) {
     
 
     return <div className="timer">
-    <p onClick={changeTime}> {time} left </p> 
+    <p onClick={changeTime}> {time} left </p>
     </div>
-
+    //onClick changeTime is used for testing
 
 }
 
